@@ -6,7 +6,7 @@ export const generateTokenAndSetCookie = (userId, res) => {
     res.cookie('jwt-netflix', token, { 
         httpOnly: true, 
         maxAge: 7 * 24 * 60 * 60 * 1000,
-        sameite: "strict",
+        sameSite: "strict",
         secure: ENV_VARS.NODE_ENV !== "development" ? true : false,  
     });
     return token;

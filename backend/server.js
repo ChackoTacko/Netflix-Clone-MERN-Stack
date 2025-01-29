@@ -1,4 +1,5 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 
 import apiRoutes from './apiRoutes.js';
 import { connectDB } from './config/db.js';
@@ -8,6 +9,7 @@ const app = express();
 const PORT = ENV_VARS.PORT
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api/v1", apiRoutes);
 
