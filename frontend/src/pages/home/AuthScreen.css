@@ -1,0 +1,8 @@
+.swiper-wrapper {
+    padding: 0 8px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #C11119;
+}

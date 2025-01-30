@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
+import Header from '../components/Header';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -48,7 +49,7 @@ const LoginPage = () => {
                             />
                         </div>
 
-                        <button className="w-full py-2  bg-red-600 text-white font-semibold rounded-md hover:bg-red-700">Log In</button>
+                        <button className="w-full py-2  bg-netflix-red text-white font-semibold rounded-md hover:bg-red-700">Log In</button>
                     </form>
                     <div className="text-center text-gray-400">
                         Don't have an account?{" "}

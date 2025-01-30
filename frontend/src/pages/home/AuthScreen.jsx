@@ -1,16 +1,45 @@
 // Desc: Authenticated home page for the Netflix Clone
-import React, { useState} from 'react'
+
+// Package Imports
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
+// Custom Imports
+import api from '../../utils/api.utils';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { SMALL_IMG_BASE_URL } from '../../utils/constants.utils';
+
+// Import custom styles
+import './AuthScreen.css';
+import CustomSection from '../../components/CustomSection';
 
 const AuthScreen = () => {
     const [email, setEmail] = useState('');
+    const [trendingNow, setTrendingNow] = useState([])
+
+    useEffect(() => {
+        const fetchTrending = async () => {
+            await api.get('/api/v1/movies/trendingMovies')
+                .then(res => {
+                    setTrendingNow(res.data.content)
+                })
+                .catch(err => console.log(err))
+        }
+
+        fetchTrending();
+    }, [])
 
     return (
         <div className="hero-bg relative">
             <header className='max-w-6xl mx-auto flex items-center justify-between p-4 pb-10'>
                 <img src="/netflix-logo.png" alt="Netflix Logo" className='w-32 md:w-52' />
-                <Link to={'login'} className='text-white bg-red-600 py-1 px-2 rounded'>
+                <Link to={'login'} className='text-white bg-netflix-red hover:bg-netflix-red-hover  py-1 px-2 rounded'>
                     Sign In
                 </Link>
             </header>
@@ -29,13 +58,48 @@ const AuthScreen = () => {
                         value={email}
                     />
 
-                    <button className="bg-red-600 text-xl lg:text-2xl px-2 lg:px-6 py-1 md:py-2 rounded flex justify-center">
+                    <button className="bg-netflix-red hover:bg-netflix-red-hover text-xl lg:text-2xl px-2 lg:px-6 py-1 md:py-2 rounded flex justify-center items-center">
                         Get Started <ChevronRight className='size-8 md:size-10' />
                     </button>
                 </form>
             </div>
 
             <div className="h-2 w-full bg-[#232323]" aria-hidden="true"></div>
+            <div className="bg-black h-screen">
+                <div className="w-full px-8 text-white">
+                    <CustomSection title='Trending Now'>
+                        <Swiper
+                            modules={[Navigation]}
+                            navigation
+                            spaceBetween={40}
+                            slidesPerView={5}
+                            breakpoints={{
+                                640: { slidesPerView: 3 },
+                                1024: { slidesPerView: 5 },
+                            }}
+                            className='trending-now__carousel'
+                            style={{
+                                "--swiper-navigation-color": "#E50914",
+                            }}
+                        >
+                            {trendingNow.map((movie, i) => (
+                                <SwiperSlide key={movie.id} className='trending-now__slide'>
+                                    <img src={`${SMALL_IMG_BASE_URL}${movie.poster_path}`} alt={movie.title} className='w-full h-full object-cover rounded-xl' />
+                                    <div className="absolute bottom-20 -left-2 text-[64px] leading-none inline-block cursor-pointer h-[1rem] font-bold text-[#414141] [-webkit-text-stroke:0.25rem_white] [text-shadow:0_0_1.5rem_rgba(0,0,0,0.5)]">
+                                        {i + 1}
+                                    </div>
+                                    <div className="absolute bottom-20 -left-2 text-[64px] leading-none inline-block cursor-pointer h-[1rem] font-bold text-black [-webkit-text-fill-color: black] [-webkit-text-stroke: 0;]">
+                                        {i + 1}
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </CustomSection>
+                    <CustomSection title='More Reasons To Join'></CustomSection>
+                    <CustomSection title='Frequently Asked Questions'></CustomSection>
+                </div>
+
+            </div>
         </div>
     )
 }

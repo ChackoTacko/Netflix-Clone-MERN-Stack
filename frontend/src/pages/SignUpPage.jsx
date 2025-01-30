@@ -65,7 +65,7 @@ const SignUpPage = () => {
                             />
                         </div>
 
-                        <button className="w-full py-2  bg-red-600 text-white font-semibold rounded-md hover:bg-red-700">Sign Up</button>
+                        <button className="w-full py-2  bg-netflix-red text-white font-semibold rounded-md hover:bg-red-700">Sign Up</button>
                     </form>
                     <div className="text-center text-gray-400">
                         Already a member?{" "}

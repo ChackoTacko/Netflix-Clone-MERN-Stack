@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'netflix-red': '#E50914',
+        'netflix-red-hover': '#C11119'
+      },
+    },
   },
   plugins: [],
 }
