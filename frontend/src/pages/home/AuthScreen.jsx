@@ -17,6 +17,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import api from '../../utils/api.utils';
 import Panels from '../../components/Panels';
 
+// Custom Images
+import PopcornIcon from '../../images/PopcornIcon';
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -81,7 +84,17 @@ const AuthScreen = () => {
             <div className="h-2 w-full bg-[#232323]" aria-hidden="true"></div>
 
             <div className="bg-black pb-24">
-                <div className="w-full px-8 text-white">
+                <div className="w-full px-8 text-white max-w-[1212px] mx-auto pt-8">
+                    <div className='signup-banner mb-16 flex flex-column justify-between items-center transition-all duration-[500ms] ease-[cubic-bezier(0.33,0,0,1)] hover:scale-105'>
+                        <PopcornIcon className="mr-4" />
+                        <div className='w-full flex flex-col md:flex-row justify-between md:items-center bg-custom-gradient-image px-6 py-3 rounded-2xl self-end'>
+                            <div className='flex flex-col mb-3 md:m-0'>
+                                <span className='font-bold text-xl'>The Netflix you love for just $7.99</span>
+                                <span className='text-base'>Get our most affordabe, ad-supported plan.</span>
+                            </div>
+                            <Link to={'/signup'}><button className='bg-[#42445A] py-[6px] px-4 rounded-[4px] text-base font-bold'>Sign Up</button></Link>
+                        </div>
+                    </div>
                     <CustomSection title='Trending Now'>
                         <Swiper
                             modules={[Navigation]}
@@ -89,7 +102,8 @@ const AuthScreen = () => {
                             spaceBetween={40}
                             slidesPerView={2}
                             breakpoints={{
-                                640: { slidesPerView: 3 },
+                                320: { slidesPerView: 3 },
+                                640: { slidesPerView: 6 },
                                 1024: { slidesPerView: 5 },
                             }}
                             className='trending-now__carousel'
@@ -99,12 +113,14 @@ const AuthScreen = () => {
                         >
                             {trendingNow.map((movie, i) => (
                                 <SwiperSlide key={movie.id} className='trending-now__slide'>
-                                    <img src={`${SMALL_IMG_BASE_URL}${movie.poster_path}`} alt={movie.title} className='w-full h-full object-cover rounded-xl' />
-                                    <div className="absolute bottom-20 -left-2 text-[64px] leading-none inline-block cursor-pointer h-[1rem] font-bold text-[#414141] [-webkit-text-stroke:0.25rem_white] [text-shadow:0_0_1.5rem_rgba(0,0,0,0.5)]">
-                                        {i + 1}
-                                    </div>
-                                    <div className="absolute bottom-20 -left-2 text-[64px] leading-none inline-block cursor-pointer h-[1rem] font-bold text-black [-webkit-text-fill-color: black] [-webkit-text-stroke: 0;]">
-                                        {i + 1}
+                                    <div className="transition-all duration-[500ms] ease-[cubic-bezier(0.33,0,0,1)] hover:scale-105 cursor-pointer">
+                                        <img src={`${SMALL_IMG_BASE_URL}${movie.poster_path}`} alt={movie.title} className='w-full h-full object-cover rounded-xl' />
+                                        <div className="absolute bottom-20 -left-2 text-[64px] leading-none inline-block cursor-pointer h-[1rem] font-bold text-[#414141] [-webkit-text-stroke:0.25rem_white] [text-shadow:0_0_1.5rem_rgba(0,0,0,0.5)]">
+                                            {i + 1}
+                                        </div>
+                                        <div className="absolute bottom-20 -left-2 text-[64px] leading-none inline-block cursor-pointer h-[1rem] font-bold text-black [-webkit-text-fill-color: black] [-webkit-text-stroke: 0;]">
+                                            {i + 1}
+                                        </div>
                                     </div>
                                 </SwiperSlide>
                             ))}
@@ -132,7 +148,6 @@ const AuthScreen = () => {
                         ))}
                     </CustomSection>
                 </div>
-
             </div>
         </div>
     )
