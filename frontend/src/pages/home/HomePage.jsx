@@ -5,7 +5,7 @@ import AuthScreen from './AuthScreen';
 const HomePage = () => {
     const user = false;
   return (
-    <div>
+    <div className='bg-black h-screen'>
         {user ? <HomeScreen /> : <AuthScreen />}
     </div>
   )

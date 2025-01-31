@@ -6,6 +6,12 @@ import { Link } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
 
 // Custom Imports
 import api from '../../utils/api.utils';
@@ -13,7 +19,7 @@ import api from '../../utils/api.utils';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { SMALL_IMG_BASE_URL } from '../../utils/constants.utils';
+import { SMALL_IMG_BASE_URL, FAQS } from '../../utils/constants.utils';
 
 // Import custom styles
 import './AuthScreen.css';
@@ -22,6 +28,13 @@ import CustomSection from '../../components/CustomSection';
 const AuthScreen = () => {
     const [email, setEmail] = useState('');
     const [trendingNow, setTrendingNow] = useState([])
+
+    const [expanded, setExpanded] = useState('panel1');
+
+    const handleChange = (panel) => (event, newExpanded) => {
+      setExpanded(newExpanded ? panel : false);
+    };
+  
 
     useEffect(() => {
         const fetchTrending = async () => {
@@ -65,14 +78,15 @@ const AuthScreen = () => {
             </div>
 
             <div className="h-2 w-full bg-[#232323]" aria-hidden="true"></div>
-            <div className="bg-black h-screen">
+
+            <div className="bg-black pb-24">
                 <div className="w-full px-8 text-white">
                     <CustomSection title='Trending Now'>
                         <Swiper
                             modules={[Navigation]}
                             navigation
                             spaceBetween={40}
-                            slidesPerView={5}
+                            slidesPerView={2}
                             breakpoints={{
                                 640: { slidesPerView: 3 },
                                 1024: { slidesPerView: 5 },
@@ -96,7 +110,24 @@ const AuthScreen = () => {
                         </Swiper>
                     </CustomSection>
                     <CustomSection title='More Reasons To Join'></CustomSection>
-                    <CustomSection title='Frequently Asked Questions'></CustomSection>
+                    <CustomSection title='Frequently Asked Questions'>
+                        {FAQS.map((faq, i) => (
+                            <Accordion expanded={expanded === `panel${i+1}`} onChange={handleChange(`panel${i+1}`)} sx={{ backgroundColor: "#2D2D2D", marginBottom: '8px' }} key={i}>
+                                 <AccordionSummary
+                                    expandIcon={expanded === `panel${i+1}` ? <CloseIcon style={{ color: 'white' }} />: <AddIcon style={{ color: 'white' }} />}
+                                    aria-controls={`panel${i + 1}-content`}
+                                    id={`panel${i + 1}-header`}
+                                >
+                                    <Typography component="span" className='font-normal text-lg' sx={{ fontSize: '18px', color: 'white' }}>{faq.question}</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography component="div" className='flex flex-col gap-4' sx={{ fontSize: '18px', color: 'white' }}>{faq.answer.map(sentence => {
+                                        return <span>{sentence}</span>
+                                    })}</Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        ))}
+                    </CustomSection>
                 </div>
 
             </div>
