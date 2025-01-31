@@ -15,6 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 // Custom Imports
 import api from '../../utils/api.utils';
+import Panels from '../../components/Panels';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -32,9 +33,9 @@ const AuthScreen = () => {
     const [expanded, setExpanded] = useState('panel1');
 
     const handleChange = (panel) => (event, newExpanded) => {
-      setExpanded(newExpanded ? panel : false);
+        setExpanded(newExpanded ? panel : false);
     };
-  
+
 
     useEffect(() => {
         const fetchTrending = async () => {
@@ -109,20 +110,22 @@ const AuthScreen = () => {
                             ))}
                         </Swiper>
                     </CustomSection>
-                    <CustomSection title='More Reasons To Join'></CustomSection>
+                    <CustomSection title='More Reasons To Join'>
+                        <Panels />
+                    </CustomSection>
                     <CustomSection title='Frequently Asked Questions'>
                         {FAQS.map((faq, i) => (
-                            <Accordion expanded={expanded === `panel${i+1}`} onChange={handleChange(`panel${i+1}`)} sx={{ backgroundColor: "#2D2D2D", marginBottom: '8px' }} key={i}>
-                                 <AccordionSummary
-                                    expandIcon={expanded === `panel${i+1}` ? <CloseIcon style={{ color: 'white' }} />: <AddIcon style={{ color: 'white' }} />}
+                            <Accordion key={faq.question} expanded={expanded === `panel${i + 1}`} onChange={handleChange(`panel${i + 1}`)} sx={{ backgroundColor: "#2D2D2D", marginBottom: '8px' }}>
+                                <AccordionSummary
+                                    expandIcon={expanded === `panel${i + 1}` ? <CloseIcon style={{ color: 'white' }} /> : <AddIcon style={{ color: 'white' }} />}
                                     aria-controls={`panel${i + 1}-content`}
                                     id={`panel${i + 1}-header`}
                                 >
                                     <Typography component="span" className='font-normal text-lg' sx={{ fontSize: '18px', color: 'white' }}>{faq.question}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
-                                    <Typography component="div" className='flex flex-col gap-4' sx={{ fontSize: '18px', color: 'white' }}>{faq.answer.map(sentence => {
-                                        return <span>{sentence}</span>
+                                    <Typography component="div" className='flex flex-col gap-4' sx={{ fontSize: '18px', color: 'white' }}>{faq.answer.map((sentence, i) => {
+                                        return <span key={i}>{sentence}</span>
                                     })}</Typography>
                                 </AccordionDetails>
                             </Accordion>

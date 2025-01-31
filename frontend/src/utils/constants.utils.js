@@ -1,3 +1,8 @@
+import TelevisionIcon from '../images/TelevisionIcon';
+import DownloadIcon from '../images/DownloadIcon';
+import TelescopeIcon from '../images/TelescopeIcon';
+import ProfileIcon from '../images/ProfileIcon';
+
 export const SMALL_IMG_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 export const ORIGINAL_IMG_BASE_URL = 'https://image.tmdb.org/t/p/original';
 
@@ -34,5 +39,28 @@ export const FAQS = [
             `The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space.`,
             `Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.`
         ]
+    }
+];
+
+export const PANELS_DATA = [
+    {
+        title: 'Enjoy on your TV',
+        text: 'Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.',
+        icon: TelevisionIcon,
+    },
+    {
+        title: 'Download your shows to watch offline',
+        text: 'Save your favorites easily and always have something to watch.',
+        icon: DownloadIcon,
+    },
+    {
+        title: 'Watch everywhere',
+        text: 'Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.',
+        icon: TelescopeIcon,
+    },
+    {
+        title: 'Create profiles for kids',
+        text: 'Send kids on adventures with their favorite characters in a space made just for them—free with your membership.',
+        icon: ProfileIcon,
     }
 ];
