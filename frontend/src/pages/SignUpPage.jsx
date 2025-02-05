@@ -2,23 +2,27 @@
 
 // Package Imports
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 // Components
 import Header from '../components/Header';
 
-const SignUpPage = () => {
+// Auth Store
+import { useAuthStore } from '../store/authUser';
 
-    const [email, setEmail] = useState('');
+const SignUpPage = () => {
+    const { searchParams } = new URL(window.location);
+    const emailValue = searchParams.get('email');
+    const [email, setEmail] = useState(emailValue || '');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
 
+    const { signup } = useAuthStore();
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // TODO
-        // axios.post('/api/auth/signup', { email, password, username })
+        signup({ email, password, username });
     };
 
     return (

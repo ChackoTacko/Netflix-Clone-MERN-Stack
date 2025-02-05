@@ -12,7 +12,7 @@ export default {
       },
       backgroundImage: {
         'custom-gradient-panel': 'linear-gradient(149deg, rgb(25, 34, 71) 0%, rgb(33, 14, 23) 96.86%)',
-        'custom-gradient-image': 'linear-gradient(91deg, rgb(38, 23, 51), rgb(21, 26, 63))'
+        'custom-gradient-image': 'linear-gradient(91deg, rgb(38, 23, 51), rgb(21, 26, 63))',
       },
     },
   },

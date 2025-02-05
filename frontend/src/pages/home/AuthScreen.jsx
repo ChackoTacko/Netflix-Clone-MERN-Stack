@@ -2,7 +2,7 @@
 
 // Package Imports
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -32,12 +32,18 @@ import CustomSection from '../../components/CustomSection';
 const AuthScreen = () => {
     const [email, setEmail] = useState('');
     const [trendingNow, setTrendingNow] = useState([])
+    const navigate = useNavigate();
 
     const [expanded, setExpanded] = useState('panel1');
 
     const handleChange = (panel) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
     };
+
+    const handleSignup = (e) => {
+        e.preventDefault();
+        navigate(`/signup?email=${email}`);
+    }
 
 
     useEffect(() => {
@@ -66,7 +72,7 @@ const AuthScreen = () => {
                 <p className="text-lg mb-4">Watch anywhere. Cancel anytime.</p>
                 <p className="mb-4">Ready to watch? Enter your email to create or restart your membership.</p>
 
-                <form className='flex flex-col md:flex-row gap-4 w-1/2'>
+                <form className='flex flex-col md:flex-row gap-4 w-1/2' onSubmit={handleSignup}>
                     <input
                         type="email"
                         className="p-2 rounded flex-1 bg-black/80 border-gray-700"
@@ -88,7 +94,7 @@ const AuthScreen = () => {
                     <div className='signup-banner mb-16 flex flex-column justify-between items-center transition-all duration-[500ms] ease-[cubic-bezier(0.33,0,0,1)] hover:scale-105'>
                         <PopcornIcon className="mr-4" />
                         <div className='w-full flex flex-col md:flex-row justify-between md:items-center bg-custom-gradient-image px-6 py-3 rounded-2xl self-end'>
-                            <div className='flex flex-col mb-3 md:m-0'>
+                            <div className='flex flex-col gap-1 mb-3 md:m-0'>
                                 <span className='font-bold text-xl'>The Netflix you love for just $7.99</span>
                                 <span className='text-base'>Get our most affordabe, ad-supported plan.</span>
                             </div>
@@ -113,15 +119,17 @@ const AuthScreen = () => {
                         >
                             {trendingNow.map((movie, i) => (
                                 <SwiperSlide key={movie.id} className='trending-now__slide'>
-                                    <div className="transition-all duration-[500ms] ease-[cubic-bezier(0.33,0,0,1)] hover:scale-105 cursor-pointer">
-                                        <img src={`${SMALL_IMG_BASE_URL}${movie.poster_path}`} alt={movie.title} className='w-full h-full object-cover rounded-xl' />
-                                        <div className="absolute bottom-20 -left-2 text-[64px] leading-none inline-block cursor-pointer h-[1rem] font-bold text-[#414141] [-webkit-text-stroke:0.25rem_white] [text-shadow:0_0_1.5rem_rgba(0,0,0,0.5)]">
-                                            {i + 1}
+                                    <Link to={`/watch/${movie.id}`}>
+                                        <div className="transition-all duration-[500ms] ease-[cubic-bezier(0.33,0,0,1)] hover:scale-105 cursor-pointer">
+                                            <img src={`${SMALL_IMG_BASE_URL}${movie.poster_path}`} alt={movie.title} className='w-full h-full object-cover rounded-xl' />
+                                            <div className="absolute bottom-20 -left-2 text-[64px] leading-none inline-block cursor-pointer h-[1rem] font-bold text-[#414141] [-webkit-text-stroke:0.25rem_white] [text-shadow:0_0_1.5rem_rgba(0,0,0,0.5)]">
+                                                {i + 1}
+                                            </div>
+                                            <div className="absolute bottom-20 -left-2 text-[64px] leading-none inline-block cursor-pointer h-[1rem] font-bold text-black [-webkit-text-fill-color: black] [-webkit-text-stroke: 0;]">
+                                                {i + 1}
+                                            </div>
                                         </div>
-                                        <div className="absolute bottom-20 -left-2 text-[64px] leading-none inline-block cursor-pointer h-[1rem] font-bold text-black [-webkit-text-fill-color: black] [-webkit-text-stroke: 0;]">
-                                            {i + 1}
-                                        </div>
-                                    </div>
+                                    </Link>
                                 </SwiperSlide>
                             ))}
                         </Swiper>

@@ -2,19 +2,21 @@
 
 // Package Imports
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 // Components
 import Header from '../components/Header';
+import { useAuthStore } from '../store/authUser';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { login } = useAuthStore();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // TODO
-        // axios.post('/api/auth/login', { email, password })
+        login({ email, password });
+        <Navigate to="/" />
     };
 
     return (
