@@ -43,7 +43,7 @@ export async function searchMovie(req, res) {
             $push: {
                 searchHistory: {
                     id: data.results[0].id,
-                    image: data.results[0].profile_path,
+                    image: data.results[0].poster_path,
                     title: data.results[0].title,
                     searchType: 'movie',
                     createdAt: new Date()

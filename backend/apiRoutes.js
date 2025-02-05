@@ -8,7 +8,7 @@ import { protectedRoute } from './middleware/protectedRoute.middleware.js';
 const router = express.Router();
 
 router.use('/auth', authRoutes);
-router.use('/movies', protectedRoute, movieRoutes);
+router.use('/movies', movieRoutes);
 router.use('/tv', protectedRoute, tvRoutes);
 router.use('/search', protectedRoute, searchRoutes);
 

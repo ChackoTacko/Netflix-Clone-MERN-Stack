@@ -12,6 +12,17 @@ export async function getTrendingMovie(req, res) {
     }
 }
 
+export async function getTrendingMovies(req, res) {
+    try {
+        const data = await fetchFromTMBD('https://api.themoviedb.org/3/trending/movie/day?language=en-US');
+        const randomMovies = data.results.slice(0,10);
+        res.status(StatusCodes.OK).json({ success: true, content: randomMovies});
+    } catch (error) {
+        console.log('Error in getTrendingMovie controller:', error.message);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ success: false, message: 'Internal Server Error' });
+    }
+}
+
 export async function getMovieTrailers(req, res) {
     const { id } = req.params;
     try {

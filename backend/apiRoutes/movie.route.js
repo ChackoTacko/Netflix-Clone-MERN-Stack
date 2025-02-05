@@ -5,14 +5,17 @@ import {
     getMoviesByCategory,
     getSimilarMovies,
     getTrendingMovie,
+    getTrendingMovies
 } from '../controllers/movie.controller.js';
+import { protectedRoute } from '../middleware/protectedRoute.middleware.js';
 
 const router = express.Router();
 
-router.get('/trending', getTrendingMovie);
-router.get('/:id/details', getMovieDetails);
-router.get('/:id/similar', getSimilarMovies);
-router.get('/:id/trailers', getMovieTrailers);
-router.get('/:category', getMoviesByCategory);
+router.get('/trending', protectedRoute, getTrendingMovie);
+router.get('/trendingMovies', getTrendingMovies);
+router.get('/:id/details', protectedRoute, getMovieDetails);
+router.get('/:id/similar', protectedRoute, getSimilarMovies);
+router.get('/:id/trailers', protectedRoute, getMovieTrailers);
+router.get('/:category', protectedRoute, getMoviesByCategory);
 
 export default router;
