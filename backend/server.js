@@ -6,6 +6,7 @@ import path from 'path';
 import apiRoutes from './apiRoutes.js';
 import { connectDB } from './config/db.js';
 import { ENV_VARS } from './config/envVars.js';
+import { forceHttps } from './middleware/forceHttps.js';
 
 const app = express();
 
@@ -19,6 +20,10 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookieParser());
+
+if (ENV_VARS.FORCE_HTTPS === 'true') {
+    app.use(forceHttps);
+}
 
 app.use("/api/v1", apiRoutes);
 
