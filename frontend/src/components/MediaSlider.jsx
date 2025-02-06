@@ -23,10 +23,10 @@ const MediaSlider = ({ category }) => {
         modules={[Navigation]}
         navigation
         spaceBetween={40}
-        slidesPerView={4}
-        slidesPerGroup={4}
+        slidesPerView={3}
+        slidesPerGroup={3}
         breakpoints={{
-          320: { slidesPerView: 4, slidesPerGroup: 4 },
+          500: { slidesPerView: 4, slidesPerGroup: 4 },
           640: { slidesPerView: 5, slidesPerGroup: 5 },
           1024: { slidesPerView: 6, slidesPerGroup: 6 },
           1440: { slidesPerView: 10, slidesPerGroup: 10 },

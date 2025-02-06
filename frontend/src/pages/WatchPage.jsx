@@ -153,7 +153,7 @@ const WatchPage = () => {
                             slidesPerView={4}
                             slidesPerGroup={4}
                             breakpoints={{
-                                320: { slidesPerView: 4, slidesPerGroup: 4 },
+                                500: { slidesPerView: 4, slidesPerGroup: 4 },
                                 640: { slidesPerView: 5, slidesPerGroup: 5 },
                             }}
                             className='trending-now__carousel'
