@@ -14,7 +14,6 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 
 // Custom Imports
-import api from '../../utils/api.utils';
 import Panels from '../../components/Panels';
 
 // Custom Images
@@ -48,11 +47,12 @@ const AuthScreen = () => {
 
     useEffect(() => {
         const fetchTrending = async () => {
-            await api.get('/api/v1/movies/trendingMovies')
-                .then(res => {
-                    setTrendingNow(res.data.content)
-                })
-                .catch(err => console.log(err))
+            try {
+                const response = await axios.get('/api/v1/movies/trendingMovies');
+                setTrendingNow(response.data.content)
+            } catch (error) {
+                setTrendingNow([]);
+            }
         }
 
         fetchTrending();

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr';
+import { ENV_VARS } from '../backend/config/envVars';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -8,7 +9,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: `${ENV_VARS.SITE_URL}`,
       }
     }
   }
