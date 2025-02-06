@@ -83,7 +83,7 @@ const AuthScreen = () => {
             <div className="bg-black pb-24">
                 <div className="w-full px-8 text-white max-w-[1212px] mx-auto pt-8">
                     <div className='signup-banner mb-16 flex flex-column justify-between items-center transition-all duration-[500ms] ease-[cubic-bezier(0.33,0,0,1)] hover:scale-105'>
-                        <PopcornIcon className="mr-4" />
+                        <PopcornIcon className="mr-4 hidden sm:inline" />
                         <div className='w-full flex flex-col md:flex-row justify-between md:items-center bg-custom-gradient-image px-6 py-3 rounded-2xl self-end'>
                             <div className='flex flex-col gap-1 mb-3 md:m-0'>
                                 <span className='font-bold text-xl'>The Netflix you love for just $7.99</span>
