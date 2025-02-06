@@ -18,7 +18,7 @@ jobs:
       - name: Install Dependencies
         run: npm run build
       - name: Generate Deployment Package
-        run: zip -r Netflix-Clone-MERN-Stack-build.zip .
+        run: zip -r --symlinks Netflix-Clone-MERN-Stack-build.zip .
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v22
         with:
