@@ -15,10 +15,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install Deendencies
+      - name: Install Dependencies
         run: npm run build
       - name: Generate Deployment Package
-        run: zip -r nodejs-app-build.zip .
+        run: zip -r Netflix-Clone-MERN-Stack-build.zip .
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v22
         with:
@@ -28,4 +28,4 @@ jobs:
           environment_name: netflix-clone-prod
           version_label: ${{ github.sha }}
           region: us-east-2
-          deployment_package: nodejs-app-build.zip
+          deployment_package:  Netflix-Clone-MERN-Stack-build.zip
