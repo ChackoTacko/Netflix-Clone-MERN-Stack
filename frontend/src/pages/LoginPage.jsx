@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 
-// Components
+// Custom Components
 import Header from '../components/Header';
 import { useAuthStore } from '../store/authUser';
 

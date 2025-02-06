@@ -1,16 +1,23 @@
+// Desc: Watch page for the Netflix Clone
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import { useMediaStore } from '../store/media';
-import Navbar from '../components/Navbar';
-import { ChevronLeft, ChevronRight, Watch } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ReactPlayer from 'react-player'
-import { SMALL_IMG_BASE_URL, ORIGINAL_IMG_BASE_URL } from '../utils/constants.utils';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { formatReleaseDate } from '../utils/dateFunctions.utis';
+
+// Custom State Store
+import { useMediaStore } from '../store/media';
+
+// Custom Components
+import Navbar from '../components/Navbar';
 import WatchPageSkeleton from '../components/skeletons/WatchPageSkeleton';
+
+// Custom Utils
+import { SMALL_IMG_BASE_URL, ORIGINAL_IMG_BASE_URL } from '../utils/constants.utils';
+import { formatReleaseDate } from '../utils/dateFunctions.utils';
 
 const WatchPage = () => {
     const { id } = useParams();

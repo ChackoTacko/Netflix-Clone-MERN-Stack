@@ -1,10 +1,17 @@
+// Descc: Search History Page
+
+// Package Imports
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import Navbar from '../components/Navbar';
-import { SMALL_IMG_BASE_URL } from '../utils/constants.utils';
-import { formatDate } from '../utils/dateFunctions.utis';
 import { Trash } from 'lucide-react';
 import toast from 'react-hot-toast';
+
+// Custom Components
+import Navbar from '../components/Navbar';
+
+// Custom Utils
+import { SMALL_IMG_BASE_URL } from '../utils/constants.utils';
+import { formatDate } from '../utils/dateFunctions.utils';
 
 const SearchHistoryPage = () => {
   const [searchHistory, setSearchHistory] = useState([]);

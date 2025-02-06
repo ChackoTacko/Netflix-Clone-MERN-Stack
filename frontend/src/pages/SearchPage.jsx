@@ -1,10 +1,17 @@
+// Desc: Search page for the Netflix Clone
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from '../components/Navbar';
-import { useMediaStore } from '../store/media';
 import { Search } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+
+// Custom Components
+import Navbar from '../components/Navbar';
+
+// Custom State Store
+import { useMediaStore } from '../store/media';
+
+// Custom Utils
 import { ORIGINAL_IMG_BASE_URL } from '../utils/constants.utils';
 
 const SearchPage = () => {

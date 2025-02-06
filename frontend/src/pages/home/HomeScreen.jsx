@@ -1,11 +1,20 @@
+// Description: Home Screen
 import React, { useState } from 'react'
-import Navbar from '../../components/Navbar';
 import { Link } from 'react-router-dom';
 import { Play, Info } from 'lucide-react';
-import { useMediaStore } from '../../store/media';
-import useGetTrendingMedia from '../../hooks/useGetTrendingMedia'
-import { MOVIE_CATEGORIES, TV_CATEGORIES, ORIGINAL_IMG_BASE_URL } from '../../utils/constants.utils';
+
+// Custom Components
+import Navbar from '../../components/Navbar';
 import MediaSlider from '../../components/MediaSlider';
+
+// Custom State Hooks
+import useGetTrendingMedia from '../../hooks/useGetTrendingMedia'
+
+// Custom State Store
+import { useMediaStore } from '../../store/media';
+
+// Custom Utils
+import { MOVIE_CATEGORIES, TV_CATEGORIES, ORIGINAL_IMG_BASE_URL } from '../../utils/constants.utils';
 
 const HomeScreen = () => {
   const { trendingMedia } = useGetTrendingMedia();

@@ -29,7 +29,8 @@ const MediaSlider = ({ category }) => {
           500: { slidesPerView: 4, slidesPerGroup: 4 },
           640: { slidesPerView: 5, slidesPerGroup: 5 },
           1024: { slidesPerView: 6, slidesPerGroup: 6 },
-          1440: { slidesPerView: 10, slidesPerGroup: 10 },
+          1440: { slidesPerView: 8, slidesPerGroup: 8 },
+          2000: { slidesPerView: 10, slidesPerGroup: 10 },
         }}
         className='trending-now__carousel'
         style={{

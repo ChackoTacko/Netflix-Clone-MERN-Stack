@@ -1,7 +1,7 @@
 // Desc: Authenticated home page for the Netflix Clone
 
 // Package Imports
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,8 +13,14 @@ import Typography from '@mui/material/Typography';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 
-// Custom Imports
+// Custom Components
 import Panels from '../../components/Panels';
+
+// Custom State Hooks
+import useGetAuthMedia from '../../hooks/useGetAuthMedia';
+
+// Custom Utils
+import { SMALL_IMG_BASE_URL, FAQS } from '../../utils/constants.utils';
 
 // Custom Images
 import PopcornIcon from '../../images/PopcornIcon';
@@ -22,7 +28,6 @@ import PopcornIcon from '../../images/PopcornIcon';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { SMALL_IMG_BASE_URL, FAQS } from '../../utils/constants.utils';
 
 // Import custom styles
 import './AuthScreen.css';
@@ -30,7 +35,7 @@ import CustomSection from '../../components/CustomSection';
 
 const AuthScreen = () => {
     const [email, setEmail] = useState('');
-    const [trendingNow, setTrendingNow] = useState([])
+    const { authMedia } = useGetAuthMedia();
     const navigate = useNavigate();
 
     const [expanded, setExpanded] = useState('panel1');
@@ -43,20 +48,6 @@ const AuthScreen = () => {
         e.preventDefault();
         navigate(`/signup?email=${email}`);
     }
-
-
-    useEffect(() => {
-        const fetchTrending = async () => {
-            try {
-                const response = await axios.get('/api/v1/movies/trendingMovies');
-                setTrendingNow(response.data.content)
-            } catch (error) {
-                setTrendingNow([]);
-            }
-        }
-
-        fetchTrending();
-    }, [])
 
     return (
         <div className="hero-bg relative">
@@ -117,7 +108,7 @@ const AuthScreen = () => {
                                 "--swiper-navigation-color": "#E50914",
                             }}
                         >
-                            {trendingNow.map((movie, i) => (
+                            {authMedia.map((movie, i) => (
                                 <SwiperSlide key={movie.id} className='trending-now__slide'>
                                     <Link to={`/watch/${movie.id}`}>
                                         <div className="transition-all duration-[500ms] ease-[cubic-bezier(0.33,0,0,1)] hover:scale-105 cursor-pointer">
