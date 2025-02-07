@@ -79,7 +79,7 @@ const SignUpPage = () => {
                 </div>
             </div>
 
-            <Footer />
+            <Footer className="absolute bottom-0 w-full"/>
         </div>
     );
 };

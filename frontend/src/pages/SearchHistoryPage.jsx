@@ -48,6 +48,7 @@ const SearchHistoryPage = () => {
             <p className="text-xl">No search history found</p>
           </div>
         </div>
+        <Footer className="absolute bottom-0 w-full" />
       </div>
     );
   }
@@ -74,7 +75,7 @@ const SearchHistoryPage = () => {
           ))}
         </div>
       </div>
-      <Footer />
+      <Footer className="absolute bottom-0 w-full" />
     </div>
   )
 }
