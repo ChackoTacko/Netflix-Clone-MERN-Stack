@@ -6,6 +6,7 @@ import { Play, Info } from 'lucide-react';
 // Custom Components
 import Navbar from '../../components/Navbar';
 import MediaSlider from '../../components/MediaSlider';
+import Footer from '../../components/Footer';
 
 // Custom State Hooks
 import useGetTrendingMedia from '../../hooks/useGetTrendingMedia'
@@ -43,7 +44,7 @@ const HomeScreen = () => {
         {/* Image Gradient */}
         <div className='absolute top-0 left-0 w-full h-full -z-50 bg-black/50' aria-hidden='true' />
 
-        <div className="absolut-top-0 left-0 w-full h-full flex flex-col justify-center px-8 md:px-16 lg:px-32">
+        <div className="absolute-top-0 left-0 w-full h-full flex flex-col justify-center px-8 md:px-16 lg:px-32">
           <div className="bg-gradient-to-b from-black via-transparent to-transparent absolute w-full h-full top-0 left-0 -z-10"></div>
 
           <div className='max-w-2xl'>
@@ -66,7 +67,6 @@ const HomeScreen = () => {
 
           </div>
         </div>
-
       </div>
 
       <div className='flex flex-col gap-10 bg-black py-10'>
@@ -75,6 +75,8 @@ const HomeScreen = () => {
           :
           (TV_CATEGORIES.map(category => <MediaSlider key={category} category={category} />))}
       </div>
+
+      <Footer />
     </>
   )
 }

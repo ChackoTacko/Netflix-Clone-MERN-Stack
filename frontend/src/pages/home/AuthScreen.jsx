@@ -15,6 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 // Custom Components
 import Panels from '../../components/Panels';
+import Footer from '../../components/Footer';
 
 // Custom State Hooks
 import useGetAuthMedia from '../../hooks/useGetAuthMedia';
@@ -148,6 +149,8 @@ const AuthScreen = () => {
                     </CustomSection>
                 </div>
             </div>
+
+            <Footer />
         </div>
     )
 }

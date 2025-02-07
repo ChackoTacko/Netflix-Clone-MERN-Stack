@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 
 // Custom Components
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 // Custom Utils
 import { SMALL_IMG_BASE_URL } from '../utils/constants.utils';
@@ -73,6 +74,7 @@ const SearchHistoryPage = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

@@ -14,6 +14,7 @@ import { useMediaStore } from '../store/media';
 // Custom Components
 import Navbar from '../components/Navbar';
 import WatchPageSkeleton from '../components/skeletons/WatchPageSkeleton';
+import Footer from '../components/Footer';
 
 // Custom Utils
 import { SMALL_IMG_BASE_URL, ORIGINAL_IMG_BASE_URL } from '../utils/constants.utils';
@@ -94,6 +95,7 @@ const WatchPage = () => {
                 <div className="text-center mx-auto px-4 py-8 h-full mt-40">
                     <h2 className="text-2l sm:text-5xl font-bold text-balance">Content not found</h2>
                 </div>
+                <Footer />
             </div>
         </div>
     );
@@ -184,6 +186,8 @@ const WatchPage = () => {
                         </Swiper>
                     </div>
                 )}
+
+                <Footer />
             </div>
         </div>
     )

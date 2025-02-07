@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 
 // Custom Components
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 // Custom State Store
 import { useMediaStore } from '../store/media';
@@ -86,7 +87,7 @@ const SearchPage = () => {
                     })}
                 </div>
             </div>
-
+            <Footer />
         </div>
     )
 }

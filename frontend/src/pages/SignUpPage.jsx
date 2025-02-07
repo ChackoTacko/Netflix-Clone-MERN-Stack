@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 // Components
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 // Auth Store
 import { useAuthStore } from '../store/authUser';
@@ -77,6 +78,8 @@ const SignUpPage = () => {
                     </div>
                 </div>
             </div>
+
+            <Footer />
         </div>
     );
 };

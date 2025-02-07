@@ -7,7 +7,6 @@ import SignUpPage from './pages/SignUpPage'
 import WatchPage from './pages/WatchPage'
 import HistoryPage from './pages/SearchHistoryPage'
 import NotFoundPage from './pages/NotFoundPage'
-import Footer from './components/Footer'
 import { useAuthStore } from './store/authUser';
 import { Loader } from 'lucide-react';
 import SearchPage from './pages/SearchPage';
@@ -41,7 +40,6 @@ function App() {
         <Route path='/history' element={user ? <HistoryPage /> : <Navigate to='/login' />} />
         <Route path='/*' element={<NotFoundPage />} />
       </Routes>
-      {/* <Footer /> */}
       <Toaster />
     </div>
   )

@@ -6,6 +6,9 @@ import { Link, Navigate } from 'react-router-dom';
 
 // Custom Components
 import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+// Custom State Store
 import { useAuthStore } from '../store/authUser';
 
 const LoginPage = () => {
@@ -59,6 +62,8 @@ const LoginPage = () => {
                     </div>
                 </div>
             </div>
+
+            <Footer />
         </div>
     );
 };
