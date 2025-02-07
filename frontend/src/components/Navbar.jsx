@@ -39,9 +39,23 @@ const Navbar = () => {
 
             {isMobileMenuOpen && (
                 <div className="w-full sm:hidden mt-4 z-50 bg-black border rounded border-gray-800 text-white">
-                    <Link to="/" className='block hover:underline p-2'>Movies</Link>
-                    <Link to="/" className='block hover:underline p-2'>TV Shows</Link>
-                    <Link to="/history" className='block hover:underline p-2'>Search History</Link>
+                    <Link
+                        to="/"
+                        className='block hover:underline p-2'
+                        onClick={() => { 
+                            setMediaType('movies');
+                            setIsMobileMenuOpen(false);
+                        }}
+                    >Movies</Link>
+                    <Link
+                        to="/"
+                        className='block hover:underline p-2'
+                        onClick={() => { 
+                            setMediaType('tv');
+                            setIsMobileMenuOpen(false);
+                        }}
+                    >TV Shows</Link>
+                    <Link to="/history" className='block hover:underline p-2' onClick={() => setIsMobileMenuOpen(false)}>Search History</Link>
                 </div>
             )}
         </header>
